@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const AxiosFunc = (requestParams) => {
+export const AxiosRequest = (requestParams) => {
   return axios({
     data:    requestParams.data,
     method:  requestParams.method,

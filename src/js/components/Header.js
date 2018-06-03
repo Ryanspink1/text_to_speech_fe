@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Button, Icon} from 'semantic-ui-react';
 import LogInForm from "./LogInForm"
 import LoggedIn from "./LoggedIn"
-import axios from "axios";
 import store from "../store/index";
 
 const mapStateToProps = state => {
@@ -21,18 +19,18 @@ class Heading extends Component{
 
   componentWillReceiveProps(){
     this.setState(
-      {loggedIn: store.getState().loggedIn}
+      { loggedIn: store.getState().loggedIn }
     )
   }
 
   render() {
     if(this.state.loggedIn === false){
       return(
-        <LogInForm></LogInForm>
+        <LogInForm/>
       )
     }else{
       return(
-      <LoggedIn></LoggedIn>
+        <LoggedIn/>
      )
     }
   }
