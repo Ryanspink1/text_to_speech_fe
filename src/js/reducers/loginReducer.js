@@ -2,19 +2,19 @@ import { ADD_USER_DATA } from "../constants/action-types";
 import { LOGIN } from "../constants/action-types";
 
 const initialState = {
-  loggedIn: false,
-  userData: null
+  userData: "",
+  loggedIn: false
+};
 
-}
-const rootReducer = (state = initialState, action) => {
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN':
-      return { ...state, loggedIn: !state.loggedIn };
-    case ADD_USER_DATA:
+    case LOGIN:
       return { ...state, userData: action.payload };
+    case ADD_USER_DATA:
+      return { ...state, loggedIn: action.payload };
     default:
      return state;
   }
 };
 
-export default rootReducer;
+export default loginReducer;
