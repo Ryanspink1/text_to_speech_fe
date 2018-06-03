@@ -39,15 +39,15 @@ class LoggedInForm extends Component{
   }
 
 
-  handleSubmit(event){
-    event.preventDefault();
+  handleSubmit(){
+    // event.preventDefault();
     this.setState({ title: ""})
   }
 
   //LOGIN***
 
-  logIn(event){
-    event.preventDefault();
+  logIn(){
+    // event.preventDefault();
     this.postUserLogin()
   }
 
@@ -95,7 +95,26 @@ class LoggedInForm extends Component{
 
   signUp(event){
     event.preventDefault();
-    console.log("cheese")
+    this.createUser();
+  }
+
+  createUser(){
+    const requestParams = {
+      method:  'post',
+      url:     'http://localhost:3001/api/v1/users',
+      headers: { 'content-type':'application/json' },
+      data:    { 'email': this.state.email, 'password':this.state.password }
+    }
+    AxiosFunc(
+      requestParams
+    )
+    .then(
+      response => {
+        this.logIn()
+      }
+    ).catch((error) => {
+      RequestError(error)
+    });
   }
 
   render(ham) {
@@ -107,7 +126,7 @@ class LoggedInForm extends Component{
           <Form.Input fluid value={password} onChange={ this.handleChange} id="password" type='password' placeholder='Password'></Form.Input>
         </Form.Group>
         <Form.Field control={Button} onClick={ this.logIn.bind(this) }>Log In</Form.Field>
-        <Form.Field control={Button} onClick={ this.signUp}>Sign Up</Form.Field>
+        <Form.Field control={Button} onClick={ this.signUp.bind(this)}>Sign Up</Form.Field>
       </Form>
     )
   }
