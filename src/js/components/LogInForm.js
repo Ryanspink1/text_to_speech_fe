@@ -5,6 +5,7 @@ import { addUserData } from "../actions/index"
 import { login } from "../actions/index"
 import store from "../store/index"
 import { AxiosFunc } from "../helpers/axios";
+import { RequestError } from "../helpers/error_handling.js"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -43,16 +44,11 @@ class LoggedInForm extends Component{
     this.setState({ title: ""})
   }
 
+  //LOGIN***
+
   logIn(event){
     event.preventDefault();
     this.postUserLogin()
-    // console.log({userData})
-    // this.props.addUserData({ userData.email, userData.id});
-  }
-
-  signUp(event){
-    event.preventDefault();
-    console.log("cheese")
   }
 
   postUserLogin() {
@@ -68,7 +64,9 @@ class LoggedInForm extends Component{
       response => {
         this.getUserData(response.data["jwt"])
       }
-      )
+    ).catch((error) => {
+      RequestError(error)
+    });
   }
 
   getUserData(jwt) {
@@ -88,8 +86,18 @@ class LoggedInForm extends Component{
         this.props.login()
         console.log(this.props)
       }
-      )
+    ).catch((error) => {
+      RequestError(error)
+    });
   }
+
+  //Sign Up***
+
+  signUp(event){
+    event.preventDefault();
+    console.log("cheese")
+  }
+
   render(ham) {
     const { email, password } = this.state
     return(

@@ -5,7 +5,6 @@ export const AxiosFunc = (requestParams) => {
     data:    requestParams.data,
     method:  requestParams.method,
     url:     requestParams.url,
-    headers: requestParams.headers,
-
+    headers: requestParams.headers
   });
 }
