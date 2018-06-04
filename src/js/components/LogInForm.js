@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Form, Button} from 'semantic-ui-react';
 import { addUserData } from "../actions/index";
 import { login } from "../actions/index";
-import { AxiosRequest} from "../helpers/axios";
+import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 
 const mapDispatchToProps = dispatch => {
@@ -73,7 +73,7 @@ class LoggingInForm extends Component{
       response => {
         const user = response.data
 
-        this.props.addUserData([user.email, jwt])
+        this.props.addUserData([user.email, jwt, user.id])
         this.props.login()
         console.log(this.props)
       }
