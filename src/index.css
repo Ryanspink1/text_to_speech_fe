@@ -2,4 +2,28 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  padding-top:50%;
+}
+
+.header {
+  margin-top: 2%;
+  margin-left:2%;
+  margin-right:2%;
+  border: 2px solid black;
+  border-radius: 7px 7px 7px 7px;
+}
+
+.header-text {
+  padding-left:15%;
+}
+
+.logged-in {
+  text-align: right;
+  margin-right: 10%;
+}
+
+.logged-in-user-email {
+  margin-left: 1%;
+  margin-right: 2%;
+  font-size: 18px;
 }
