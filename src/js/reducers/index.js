@@ -4,9 +4,10 @@ import { LOGOUT } from "../constants/action-types";
 
 const initialState = {
   loggedIn: false,
-  userData: null
-
+  userData: { email: null,
+              jwt:   null }
 }
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN':
@@ -14,7 +15,7 @@ const rootReducer = (state = initialState, action) => {
     case 'LOGOUT':
       return { ...state, loggedIn: !state.loggedIn };
     case ADD_USER_DATA:
-      return { ...state, userData: action.payload };
+      return { ...state, userData: { email: action.payload[0], jwt: action.payload[1] }};
     default:
      return state;
   }

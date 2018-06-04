@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button} from 'semantic-ui-react';
-import { addUserData } from "../actions/index"
-import { login } from "../actions/index"
+import { addUserData } from "../actions/index";
+import { login } from "../actions/index";
 import { AxiosRequest} from "../helpers/axios";
-import { RequestError } from "../helpers/error_handling.js"
+import { RequestError } from "../helpers/error_handling";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -19,7 +19,7 @@ const mapStateToProps = state => {
   };
 };
 
-class LoggedInForm extends Component{
+class LoggingInForm extends Component{
   constructor() {
     super();
     this.state={
@@ -38,7 +38,7 @@ class LoggedInForm extends Component{
 
   logIn(event){
     event.preventDefault();
-    this.postUserLogin()
+    this.postUserLogin();
   }
 
   postUserLogin() {
@@ -72,8 +72,10 @@ class LoggedInForm extends Component{
     .then(
       response => {
         const user = response.data
-        this.props.addUserData(user.email)
+
+        this.props.addUserData([user.email, jwt])
         this.props.login()
+        console.log(this.props)
       }
     ).catch((error) => {
       RequestError(error)
@@ -106,7 +108,7 @@ class LoggedInForm extends Component{
     });
   }
 
-  render(ham) {
+  render() {
     return(
       <Form>
         <Form.Group inline>
@@ -120,6 +122,6 @@ class LoggedInForm extends Component{
   }
 };
 
-const LogInForm = connect(mapStateToProps, mapDispatchToProps)(LoggedInForm);
+const LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoggingInForm);
 
-export default LogInForm;
+export default LoginForm;

@@ -1,6 +1,7 @@
 import React from "react";
-import Header from "./Header";
 import { Grid} from 'semantic-ui-react';
+import Header from "./Header";
+import TextToSpeechForm from "./TextToSpeechForm";
 
 
 const App = () => (
@@ -15,6 +16,11 @@ const App = () => (
           <Grid.Column width={7}>
             <Header/>
           </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>
+          <TextToSpeechForm />
+        </Grid.Column>
       </Grid.Row>
     </Grid>
   </div>

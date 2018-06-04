@@ -17,12 +17,14 @@ class LoggedInUser extends Component {
   constructor() {
     super();
     this.state={
-      userData: null
+      userData: { email: null,
+                  jwt:   null}
     };
   }
 
   componentDidMount(){
     this.setState({userData: this.props.userData})
+    console.log(this.state)
   }
 
   loggedOut(){
@@ -34,7 +36,7 @@ class LoggedInUser extends Component {
     return(
       <div className="logged-in">
         <Icon style={{ display: "inline" }} name='user' size='large'></Icon>
-        <span className="logged-in-user-email" style={{ display: "inline" }}> {userData}</span>
+        <span className="logged-in-user-email" style={{ display: "inline" }}> {userData.email}</span>
         <Button style={{ display: "inline" }} id='logoutButton' onClick={this.loggedOut.bind(this)} size='small'>Logout</Button>
       </div>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import LogInForm from "./LogInForm"
+import LoginForm from "./LoginForm"
 import LoggedIn from "./LoggedIn"
 import store from "../store/index";
 
@@ -26,7 +26,7 @@ class Heading extends Component{
   render() {
     if(this.state.loggedIn === false){
       return(
-        <LogInForm/>
+        <LoginForm/>
       )
     }else{
       return(
