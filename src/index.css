@@ -11,9 +11,11 @@ body {
   margin-right:2%;
   border: 2px solid black;
   border-radius: 7px 7px 7px 7px;
+  background-color: #47B99C;
 }
 
 .header-text {
+  padding-top:1%;
   padding-left:15%;
 }
 
@@ -26,4 +28,17 @@ body {
   margin-left: 1%;
   margin-right: 2%;
   font-size: 18px;
+}
+
+.text-to-speech-component {
+  border: 2px solid black;
+  border-radius: 7px 7px 7px 7px;
+  padding-top: 2%;
+  display:inline-block;
+  text-align:center;
+  width:100%;
+}
+
+.text-to-speech-form{
+  left:12.5%;
 }

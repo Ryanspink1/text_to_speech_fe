@@ -56,7 +56,6 @@ class TTSForm extends Component {
     ).then(
       response => {
         this.props.addUserConversion(response.data);
-        console.log(store.getState().conversions)
         this.setState({ voice: "",
                         text: ""})
       }
@@ -67,13 +66,15 @@ class TTSForm extends Component {
 
   render(){
     return(
-      <Form>
-        <Form.Group>
-          <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={4}></Form.Input>
-          <Form.Field control={ Dropdown } onChange={this.handleChange} value={this.state.voice} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
-          <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
-        </Form.Group>
-      </Form>
+      <div className="text-to-speech-component">
+        <Form className="text-to-speech-form">
+          <Form.Group>
+            <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={6}></Form.Input>
+            <Form.Field control={ Dropdown } width={4} onChange={this.handleChange} value={this.state.voice} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
+            <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
+          </Form.Group>
+        </Form>
+      </div>
     )
   }
 }

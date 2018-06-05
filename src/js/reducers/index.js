@@ -7,8 +7,7 @@ const initialState = {
   loggedIn: false,
   userData: { email: null,
               jwt:   null,
-              id:    null,
-              conversions: [] },
+              id:    null},
   conversions: []
 
 }
