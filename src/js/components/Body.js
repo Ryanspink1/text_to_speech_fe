@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import LoginForm from "./LoginForm"
-import LoggedIn from "./LoggedIn"
-import store from "../store/index";
+import store from "../store/index"
+import TextToSpeechForm from "./TextToSpeechForm"
 
 const mapStateToProps = state => {
   return { loggedIn: state.loggedIn };
 };
 
-class ConnectedHeader extends Component{
-  constructor() {
+class The_Body extends Component {
+  constructor(){
     super();
-
     this.state={
       loggedIn: false
     };
@@ -23,19 +21,21 @@ class ConnectedHeader extends Component{
     )
   }
 
-  render() {
-    if(this.state.loggedIn === false){
+  render(){
+    if(this.state.loggedIn === true){
       return(
-        <LoginForm/>
+          <TextToSpeechForm/>
       )
     }else{
       return(
-        <LoggedIn/>
-     )
+        <div>
+          <h1>Log In or Sign up!</h1>
+        </div>
+      )
     }
   }
 }
 
-const Header = connect(mapStateToProps)(ConnectedHeader);
+const Body = connect(mapStateToProps)(The_Body);
 
-export default Header;
+export default Body;

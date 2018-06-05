@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import { Form, Button} from 'semantic-ui-react';
 import { addUserData } from "../actions/index";
 import { login } from "../actions/index";
-import { AxiosRequest} from "../helpers/axios";
+import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
+import { addUserConversion } from "../actions/index";
 
 const mapDispatchToProps = dispatch => {
   return {
     addUserData: userData => dispatch(addUserData(userData)),
-    login: loggedIn => dispatch(login(loggedIn))
+    login: loggedIn => dispatch(login(loggedIn)),
+    addUserConversion: userConversion => dispatch(addUserConversion(userConversion))
   };
 };
 
@@ -73,14 +75,17 @@ class LoggingInForm extends Component{
       response => {
         const user = response.data
 
-        this.props.addUserData([user.email, jwt])
+        this.props.addUserData([user.email, jwt, user.id])
         this.props.login()
-        console.log(this.props)
+        // this.getConversions();
       }
     ).catch((error) => {
       RequestError(error)
     });
   }
+
+
+
 
   //SIGN UP***
 

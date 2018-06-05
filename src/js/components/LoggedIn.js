@@ -24,7 +24,6 @@ class LoggedInUser extends Component {
 
   componentDidMount(){
     this.setState({userData: this.props.userData})
-    console.log(this.state)
   }
 
   loggedOut(){

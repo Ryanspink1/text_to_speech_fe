@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Dropdown, Button} from "semantic-ui-react";
 import { voiceOptions } from "../helpers/voiceOptions"
+import { addUserConversion } from "../actions/index";
+import { AxiosRequest } from "../helpers/axios"
+import { RequestError } from "../helpers/error_handling";
 import store from "../store/index";
-import AxiosRequest from "../helpers/axios"
 
 const mapStateToProps = state => {
   return {
@@ -11,13 +13,19 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    addUserConversion: userConversion => dispatch(addUserConversion(userConversion)),
+  };
+};
+
 class TTSForm extends Component {
   constructor(){
     super();
     this.state={
-      jwt:   null,
-      voice: null,
-      text: null,
+      jwt:   "",
+      voice: "",
+      text: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,30 +48,37 @@ class TTSForm extends Component {
     const requestParams = {
       method:  'post',
       url:     'http://localhost:3001/api/v1/users/conversions',
-      headers: { 'content-type':'application/json' },
-      data:    { 'email': this.state.email, 'password':this.state.password }
+      headers: {'Authorization' :'Bearer ' + this.state.jwt},
+      data:    {voice: this.state.voice, text: this.state.text, id: store.getState().userData.id}
     }
+    AxiosRequest(
+      requestParams
+    ).then(
+      response => {
+        this.props.addUserConversion(response.data);
+        this.setState({ voice: "",
+                        text: ""})
+      }
+    ).catch((error) => {
+      RequestError(error)
+    });
   }
-
-  requestConversion(){
-
-  }
-
-
 
   render(){
     return(
-      <Form>
-        <Form.Group>
-          <Form.Input onChange={ this.handleChange } id="text" placeholder='Text' width={4}></Form.Input>
-          <Form.Field control={ Dropdown } onChange={this.handleChange} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
-          <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
-        </Form.Group>
-      </Form>
+      <div className="text-to-speech-component">
+        <Form className="text-to-speech-form">
+          <Form.Group>
+            <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={6}></Form.Input>
+            <Form.Field control={ Dropdown } width={4} onChange={this.handleChange} value={this.state.voice} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
+            <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
+          </Form.Group>
+        </Form>
+      </div>
     )
   }
 }
 
-const TextToSpeechForm = connect(mapStateToProps)(TTSForm);
+const TextToSpeechForm = connect(mapStateToProps, mapDispatchToProps)(TTSForm);
 
 export default TextToSpeechForm;
