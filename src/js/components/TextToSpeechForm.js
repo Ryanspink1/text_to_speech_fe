@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addUserConversion: userConversion => dispatch(addUserConversion(userConversion)),
+    addUserConversion: userConversion => dispatch(addUserConversion(userConversion))
   };
 };
 

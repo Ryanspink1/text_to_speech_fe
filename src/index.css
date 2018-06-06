@@ -5,7 +5,7 @@ body {
   padding-top:50%;
 }
 
-.header {
+.page-header {
   margin-top: 2%;
   margin-left:2%;
   margin-right:2%;
@@ -39,6 +39,25 @@ body {
   width:100%;
 }
 
-.text-to-speech-form{
+.text-to-speech-form {
   left:12.5%;
+}
+
+.conversion-list-item-icon:hover{
+  cursor: pointer;
+}
+
+.conversion-list-item-header {
+  text-align:center;
+}
+.conversion-list-item-description {
+  text-align:center;
+}
+.conversion-list-item-content {
+  text-align:center;
+}
+
+.conversion-list-item-delete-button{
+  background-color:red;
+  text-align:right;
 }
