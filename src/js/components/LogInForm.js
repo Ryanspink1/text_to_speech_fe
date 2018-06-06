@@ -101,7 +101,6 @@ class LoggingInForm extends Component{
     .then(
       response => {
         const conversions = response.data
-        console.log(response.data)
         this.props.addUserConversion(conversions)
       }
     ).catch((error) => {

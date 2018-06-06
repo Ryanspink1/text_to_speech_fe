@@ -9,7 +9,7 @@ import ConversionList from "./ConversionList";
 const App = () => (
   <div className="">
     <Grid centered={true}>
-      <Grid.Row className="header">
+      <Grid.Row className="page-header">
           <Grid.Column width={9}>
             <div className="header-text">
               <h1>Text To Speech</h1>
