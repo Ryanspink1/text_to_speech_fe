@@ -43,6 +43,10 @@ body {
   left:12.5%;
 }
 
+.conversion-list-item-icon:hover{
+  cursor: pointer;
+}
+
 .conversion-list-item-header {
   text-align:center;
 }
@@ -51,4 +55,9 @@ body {
 }
 .conversion-list-item-content {
   text-align:center;
+}
+
+.conversion-list-item-delete-button{
+  background-color:red;
+  text-align:right;
 }
