@@ -24,6 +24,11 @@ const App = () => (
           <TextToSpeechForm/>
         </Grid.Column>
       </Grid.Row>
+      <Grid.Row centered>
+        <Grid.Column width={8}>
+          <ConversionList/>
+        </Grid.Column>
+      </Grid.Row>
     </Grid>
   </div>
 );

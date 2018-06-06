@@ -6,12 +6,14 @@ import { login } from "../actions/index";
 import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 import { addUserConversion } from "../actions/index";
+import store from "../store/index"
+
 
 const mapDispatchToProps = dispatch => {
   return {
     addUserData: userData => dispatch(addUserData(userData)),
     login: loggedIn => dispatch(login(loggedIn)),
-    addUserConversion: userConversion => dispatch(addUserConversion(userConversion))
+    addUserConversion: userConversion => dispatch(addUserConversion(userConversion)),
   };
 };
 
@@ -26,7 +28,8 @@ class LoggingInForm extends Component{
     super();
     this.state={
       email: "",
-      password: ""
+      password: "",
+      jwt:""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,6 +58,7 @@ class LoggingInForm extends Component{
     ).then(
       response => {
         this.getUserData(response.data["jwt"])
+        this.setState({jwt:response.data["jwt"]})
       }
     ).catch((error) => {
       RequestError(error)
@@ -77,15 +81,33 @@ class LoggingInForm extends Component{
 
         this.props.addUserData([user.email, jwt, user.id])
         this.props.login()
-        // this.getConversions();
+        this.getConversions();
       }
     ).catch((error) => {
       RequestError(error)
     });
   }
 
-
-
+  getConversions(){
+    const requestParams = {
+      method:  'get',
+      url:     `http://localhost:3001/api/v1/conversions`,
+      headers: {'Authorization' :'Bearer ' + this.state.jwt},
+      data:    null
+    }
+    AxiosRequest(
+      requestParams
+    )
+    .then(
+      response => {
+        const conversions = response.data
+        console.log(response.data)
+        this.props.addUserConversion(conversions)
+      }
+    ).catch((error) => {
+      RequestError(error)
+    });
+  }
 
   //SIGN UP***
 

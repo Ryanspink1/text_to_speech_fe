@@ -21,7 +21,7 @@ const rootReducer = (state = initialState, action) => {
     case ADD_USER_DATA:
       return { ...state, userData: { email: action.payload[0], jwt: action.payload[1] , id: action.payload[2]}};
     case ADD_USER_CONVERSION:
-      return { ...state, conversions: [...state.conversions, action.payload] };
+      return { ...state, conversions: state.conversions.concat(action.payload) };
     default:
      return state;
   }
