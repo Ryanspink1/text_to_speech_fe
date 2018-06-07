@@ -45,6 +45,7 @@ body {
 
 .conversion-list-item-icon:hover{
   cursor: pointer;
+  right:100%;
 }
 
 .conversion-list-item-header {

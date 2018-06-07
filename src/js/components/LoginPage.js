@@ -8,7 +8,7 @@ const mapStateToProps = state => {
   return { loggedIn: state.loggedIn };
 };
 
-class ConnectedHeader extends Component{
+class ConnectedLoginPage extends Component{
   constructor() {
     super();
 
@@ -36,6 +36,6 @@ class ConnectedHeader extends Component{
   }
 }
 
-const Header = connect(mapStateToProps)(ConnectedHeader);
+const LoginPage = connect(mapStateToProps)(ConnectedLoginPage);
 
-export default Header;
+export default LoginPage;

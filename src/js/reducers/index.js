@@ -17,8 +17,8 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN':
       return { ...state, loggedIn: !state.loggedIn };
-    case 'LOGOUT':
-      return { ...state, loggedIn: !state.loggedIn };
+      case 'LOGOUT':
+        return { ...state, loggedIn: !state.loggedIn, userData: { email: null, jwt: null, id: null }, conversions:[] };
     case ADD_USER_DATA:
       return { ...state, userData: { email: action.payload[0], jwt: action.payload[1] , id: action.payload[2]}};
     case ADD_USER_CONVERSION:
