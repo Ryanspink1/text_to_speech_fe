@@ -4,6 +4,9 @@ body {
   font-family: sans-serif;
   padding-top:50%;
 }
+#greeting-container{
+  margin-right:0px;
+}
 
 .greeting-logo {
   text-align: center;
@@ -12,10 +15,25 @@ body {
 
 #greeting-text {
   text-align:center;
+  margin-top: 1%;
+  font-size: 150%;
+}
+
+#loginButton {
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#login-signup-selector {
+  text-align:center;
   margin-top: 2%;
   font-size: 150%;
 }
 
+.field {
+  display: block;
+}
 /* .page-header {
   margin-top: 2%;
   margin-left:2%;

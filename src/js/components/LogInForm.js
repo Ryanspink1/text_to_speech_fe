@@ -7,6 +7,7 @@ import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 import { addUserConversion } from "../actions/index";
 import store from "../store/index"
+import { Router} from "react-router-dom";
 
 
 const mapDispatchToProps = dispatch => {
@@ -19,11 +20,12 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    userData: state.userData
-  };
-};
+    login: state.login,
+    loginButton: state.loginButton
+  }
+}
 
-class LoggingInForm extends Component{
+class ConnectedLoginForm extends Component{
   constructor() {
     super();
     this.state={
@@ -102,6 +104,7 @@ class LoggingInForm extends Component{
       response => {
         const conversions = response.data
         this.props.addUserConversion(conversions)
+        this.props.history.push('/user')
       }
     ).catch((error) => {
       RequestError(error)
@@ -135,19 +138,20 @@ class LoggingInForm extends Component{
   }
 
   render() {
+    let LoginOrSignupButton = (this.props.loginButton === true)
+        ? <Form.Field control={Button} onClick={ this.logIn.bind(this) } size='small' >Log In</Form.Field>
+        : <Form.Field control={Button} onClick={ this.signUp.bind(this)} size='small' >Sign Up</Form.Field>
+
     return(
-      <Form>
-        <Form.Group inline>
-          <Form.Input onChange={ this.handleChange } id="email" placeholder='Email' width={4} ></Form.Input>
-          <Form.Input onChange={ this.handleChange} id="password" type='password' placeholder='Password' width={4}></Form.Input>
-          <Form.Field control={Button} onClick={ this.logIn.bind(this) } size='small' >Log In</Form.Field>
-          <Form.Field control={Button} onClick={ this.signUp.bind(this)} size='small' >Sign Up</Form.Field>
-        </Form.Group>
+      <Form className="login-signup-form">
+        <Form.Input onChange={ this.handleChange } id="email" placeholder='Email' width={16} ></Form.Input>
+        <Form.Input onChange={ this.handleChange} id="password" type='password' placeholder='Password' width={16}></Form.Input>
+        { LoginOrSignupButton }
       </Form>
     )
   }
 };
 
-const LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoggingInForm);
+const LoginForm = connect(mapStateToProps, mapDispatchToProps)(ConnectedLoginForm);
 
 export default LoginForm;

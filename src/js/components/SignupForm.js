@@ -11,7 +11,7 @@ const mapStateToProps = state => {
   };
 };
 
-class LoggingInForm extends Component{
+class NonConnectedSignUpForm extends Component{
   constructor() {
     super();
     this.state={
@@ -66,6 +66,6 @@ class LoggingInForm extends Component{
   }
 };
 
-const LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoggingInForm);
+const SignUpForm = connect(mapStateToProps, mapDispatchToProps)(NonConnectedSignUpForm);
 
-export default LoginForm;
+export default SignUpForm;

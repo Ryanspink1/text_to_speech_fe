@@ -3,14 +3,15 @@ import { LOGIN } from "../constants/action-types";
 import { LOGOUT } from "../constants/action-types";
 import { ADD_USER_CONVERSION } from "../constants/action-types";
 import { DELETE_CONVERSION } from "../constants/action-types";
+import { ADD_LOGIN_BUTTON_STATUS } from "../constants/action-types";
 
 const initialState = {
   loggedIn: false,
   userData: { email: null,
               jwt:   null,
               id:    null},
-  conversions: []
-
+  conversions: [],
+  loginButton: true
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -25,6 +26,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, conversions: state.conversions.concat(action.payload) };
     case DELETE_CONVERSION:
       return { ...state, conversions: state.conversions.filter(conversion => conversion != action.payload )};
+    case ADD_LOGIN_BUTTON_STATUS:
+      return { ...state, loginButton: action.payload };
     default:
      return state;
   }
