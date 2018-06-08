@@ -5,6 +5,17 @@ body {
   padding-top:50%;
 }
 
+.greeting-logo {
+  text-align: center;
+  margin-top:3%;
+}
+
+#greeting-text {
+  text-align:center;
+  margin-top: 2%;
+  font-size: 150%;
+}
+
 /* .page-header {
   margin-top: 2%;
   margin-left:2%;

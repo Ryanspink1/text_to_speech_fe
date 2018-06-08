@@ -1,21 +1,25 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom"
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import { Grid } from 'semantic-ui-react';
-import LoginForm from "./LoginForm"
-import LoggedIn from "./LoggedIn"
-import store from "../store/index";
+import LoginForm from './LoginForm'
+import LoggedIn from './LoggedIn'
+import { Greeting } from './Greeting'
+import store from '../store/index';
+import LoginSignup from './LoginSignup'
 
 const mapStateToProps = state => {
   return { loggedIn: state.loggedIn };
 };
 
 class ConnectedLoginPage extends Component{
-  constructor() {
+  constructor(){
     super();
 
     this.state={
-      loggedIn: false
+      loggedIn: false,
+      login: true,
+      signup: false
     };
   }
 
@@ -29,12 +33,8 @@ class ConnectedLoginPage extends Component{
     if(this.state.loggedIn === false){
       return(
         <Grid>
-          <Grid.Row>
-          </Grid.Row>
-          <Grid.Row>
-            <LoginForm/>
-            <Link to="/protected">Protected</Link>
-          </Grid.Row>
+          <Greeting/>
+          <LoginSignup/>
         </Grid>
       )
     }else{
