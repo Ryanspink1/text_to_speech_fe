@@ -9,7 +9,7 @@ export const Greeting = () => (
         </div>
         <div id="greeting-text">
           <p>
-            <strong>Welcome to Text to Speech:</strong> an app for converting text phrases to spoken output.
+            <strong>Welcome to Text to Speech:</strong> an app for converting text phrases to spoken word.
           </p>
         </div>
       </Grid.Column>

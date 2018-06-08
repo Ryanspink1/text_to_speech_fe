@@ -7,7 +7,6 @@ import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 import { addUserConversion } from "../actions/index";
 import store from "../store/index"
-import { Router} from "react-router-dom";
 
 
 const mapDispatchToProps = dispatch => {
@@ -139,7 +138,7 @@ class ConnectedLoginForm extends Component{
 
   render() {
     let LoginOrSignupButton = (this.props.loginButton === true)
-        ? <Form.Field control={Button} onClick={ this.logIn.bind(this) } size='small' >Log In</Form.Field>
+        ? <Form.Field control={Button} onClick={ this.logIn.bind(this) } size='small' >Login</Form.Field>
         : <Form.Field control={Button} onClick={ this.signUp.bind(this)} size='small' >Sign Up</Form.Field>
 
     return(

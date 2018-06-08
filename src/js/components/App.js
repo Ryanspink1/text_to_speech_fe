@@ -9,7 +9,8 @@ import PrivateRoute from '../helpers/privateRoute';
 const App = (props) => (
     <Switch>
       <Route exact path="/" component={ LoginPage} />
-      <PrivateRoute path="/user" component={ TextToSpeechForm } loggedIn={props.loggedIn}/>
+
+      <PrivateRoute path="/user" component={ ConversionList } loggedIn={props.loggedIn}/>
     </Switch>
 );
 

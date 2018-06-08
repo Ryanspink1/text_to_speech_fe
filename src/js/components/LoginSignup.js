@@ -16,31 +16,30 @@ class ConnectedLoginSignup extends Component{
   constructor(){
     super();
     this.state={
+      loginButton:true
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event, boolean) {
+    this.setState({ [event.target.id]: boolean });
     this.props.addLoginButtonStatus(boolean);
-    console.log(this.props)
   }
 
   render(){
     const loginStatus = this.state.login
-    const LoginOrSignup = (loginStatus === true)
-        ? <LoginForm/>
-        : <h1>Fuck you</h1>
+    const bStyle = {
+      fontWeight: 'bold',
+      color: 'blue'
+    };
+    const buttons = (this.state.loginButton === true)
+      ? <p>Please <span id="loginButton" onClick={(e)=>this.handleChange(e, true)}> login </span> or <span style={bStyle} id="loginButton" onClick={(e)=>this.handleChange(e, false)}> sign up </span>to continue.</p>
+      : <p>Please <span id="loginButton" style={bStyle} onClick={(e)=>this.handleChange(e, true)}> login </span> or <span id="loginButton" onClick={(e)=>this.handleChange(e, false)}> sign up </span>to continue.</p>
     return (
       <Grid.Row centered>
         <Grid.Column width={4}>
           <div id="login-signup-selector">
-            <p>
-              Please
-              <span id="loginButton" onClick={(e)=>this.handleChange(e, true)}> login </span>
-              or
-              <span id="loginButton" onClick={(e)=>this.handleChange(e, false)}> sign up </span>
-              to continue.
-            </p>
+            {buttons}
             <LoginForm/>
           </div>
         </Grid.Column>
