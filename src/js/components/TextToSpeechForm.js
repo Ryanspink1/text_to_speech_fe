@@ -9,7 +9,8 @@ import store from "../store/index";
 
 const mapStateToProps = state => {
   return {
-    jwt: state.userData.jwt
+    jwt: state.userData.jwt,
+    id: state.userData.id
   };
 };
 
@@ -19,7 +20,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-class TTSForm extends Component {
+class ConnectedTextToSpeechForm extends Component {
   constructor(){
     super();
     this.state={
@@ -44,12 +45,13 @@ class TTSForm extends Component {
 
 
   handleSubmit(event){
+    console.log(this.props)
     event.preventDefault();
     const requestParams = {
       method:  'post',
       url:     'http://localhost:3001/api/v1/users/conversions',
-      headers: {'Authorization' :'Bearer ' + this.state.jwt},
-      data:    {voice: this.state.voice, text: this.state.text, id: store.getState().userData.id}
+      headers: {'Authorization' :'Bearer ' + this.props.jwt},
+      data:    {voice: this.state.voice, text: this.state.text, id: this.props.id}
     }
     AxiosRequest(
       requestParams
@@ -79,6 +81,5 @@ class TTSForm extends Component {
   }
 }
 
-const TextToSpeechForm = connect(mapStateToProps, mapDispatchToProps)(TTSForm);
-
+const TextToSpeechForm = connect(mapStateToProps, mapDispatchToProps)(ConnectedTextToSpeechForm);
 export default TextToSpeechForm;

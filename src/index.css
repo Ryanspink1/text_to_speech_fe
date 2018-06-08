@@ -4,8 +4,36 @@ body {
   font-family: sans-serif;
   padding-top:50%;
 }
+#greeting-container{
+  margin-right:0px;
+}
 
-.page-header {
+.greeting-logo {
+  text-align: center;
+  margin-top:3%;
+}
+
+#greeting-text {
+  text-align:center;
+  margin-top: 1%;
+  font-size: 150%;
+}
+
+#loginButton {
+  cursor: pointer;
+  /* font-weight: bold; */
+}
+
+#login-signup-selector {
+  text-align:center;
+  margin-top: 2%;
+  font-size: 150%;
+}
+
+.field {
+  display: block;
+}
+/* .page-header {
   margin-top: 2%;
   margin-left:2%;
   margin-right:2%;
@@ -28,7 +56,7 @@ body {
   margin-left: 1%;
   margin-right: 2%;
   font-size: 18px;
-}
+} */
 
 .text-to-speech-component {
   border: 2px solid black;
@@ -45,6 +73,7 @@ body {
 
 .conversion-list-item-icon:hover{
   cursor: pointer;
+  right:100%;
 }
 
 .conversion-list-item-header {

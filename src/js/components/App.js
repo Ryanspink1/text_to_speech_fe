@@ -1,36 +1,21 @@
-import React from "react";
-import { Grid} from 'semantic-ui-react';
-import Header from "./Header";
-// import Body from "./Body"
-import TextToSpeechForm from "./TextToSpeechForm";
-import ConversionList from "./ConversionList";
+import React from 'react';
+import { connect } from "react-redux";
+import { Route , Switch} from "react-router-dom";
+import LoginPage from './LoginPage';
+import TextToSpeechForm from './TextToSpeechForm';
+import ConversionList from './ConversionList';
+import PrivateRoute from '../helpers/privateRoute';
 
+const App = (props) => (
+    <Switch>
+      <Route exact path="/" component={ LoginPage} />
 
-const App = () => (
-  <div className="">
-    <Grid centered={true}>
-      <Grid.Row className="page-header">
-          <Grid.Column width={9}>
-            <div className="header-text">
-              <h1>Text To Speech</h1>
-            </div>
-          </Grid.Column>
-          <Grid.Column width={7}>
-            <Header/>
-          </Grid.Column>
-      </Grid.Row>
-      <Grid.Row centered>
-        <Grid.Column width={8}>
-          <TextToSpeechForm/>
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row centered>
-        <Grid.Column width={8}>
-          <ConversionList/>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
-  </div>
+      <PrivateRoute path="/user" component={ ConversionList } loggedIn={props.loggedIn}/>
+    </Switch>
 );
 
-export default App;
+const mapStateToProps = state => {
+  return { loggedIn: state.loggedIn };
+};
+
+export default connect(mapStateToProps)(App);

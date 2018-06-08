@@ -11,6 +11,6 @@ export const voiceOptions = [
   { key: "de-DE_BirgitVoice", value: "de-DE_BirgitVoice", text: "Birgit (de)", flag:	"de" },
   { key: "fr-FR_ReneeVoice", value: "fr-FR_ReneeVoice", text: "Renee (fr)", flag:	"fr" },
   { key: "it-IT_FrancescaVoice", value: "it-IT_FrancescaVoice", text: "Francesca (it)", flag:	"it" },
-  { key: "ja-JP_EmiVoice", value: "ja-JP_EmiVoice", value: "ja-JP_EmiVoice", text: "Emi (ja)", flag:	"jp" },
+  { key: "ja-JP_EmiVoice", value: "ja-JP_EmiVoice", text: "Emi (ja)", flag:	"jp" },
   { key: "pt-BR_IsabelaVoice", value: "pt-BR_IsabelaVoice", text: "Isabela (pt)", flag:	"br" }
 ]
