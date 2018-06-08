@@ -8,18 +8,31 @@ class NonConnectedLoginSignup extends Component{
     this.state={
       login: true
     }
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  handleChange(event, boolean) {
+    this.setState({ [event.target.id]: boolean});
+  }
 
   render(){
     const loginStatus = this.state.login
-    const LoginOrSignup = (loginStatus == true)
+    const LoginOrSignup = (loginStatus === true)
         ? <LoginForm/>
         : <h1>Fuck you</h1>
     return (
       <Grid.Row>
         <Grid.Column>
-          {LoginOrSignup}
+          <div>
+            <p>
+              Please
+              <span id="login"onClick={(e)=>this.handleChange(e, true)}> login </span>
+              or
+              <span id="login" onClick={(e)=>this.handleChange(e, false)}> sign up </span>
+              to continue.
+            </p>
+            { LoginOrSignup }
+          </div>
         </Grid.Column>
       </Grid.Row>
     )
@@ -27,5 +40,4 @@ class NonConnectedLoginSignup extends Component{
 }
 
 const LoginSignup = NonConnectedLoginSignup
-
 export default LoginSignup

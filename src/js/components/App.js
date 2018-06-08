@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route , Switch} from "react-router-dom";
+import { Route , Switch} from "react-router-dom";
 import LoginPage from './LoginPage';
 import TextToSpeechForm from './TextToSpeechForm';
-import LoggedIn from './LoggedIn';
 import ConversionList from './ConversionList';
 import PrivateRoute from '../helpers/privateRoute';
 
