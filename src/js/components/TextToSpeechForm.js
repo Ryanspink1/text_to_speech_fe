@@ -44,11 +44,12 @@ class TTSForm extends Component {
 
 
   handleSubmit(event){
+    console.log(this.props)
     event.preventDefault();
     const requestParams = {
       method:  'post',
       url:     'http://localhost:3001/api/v1/users/conversions',
-      headers: {'Authorization' :'Bearer ' + this.state.jwt},
+      headers: {'Authorization' :'Bearer ' + this.props.jwt},
       data:    {voice: this.state.voice, text: this.state.text, id: store.getState().userData.id}
     }
     AxiosRequest(

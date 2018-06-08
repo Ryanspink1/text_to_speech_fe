@@ -57,8 +57,8 @@ class LoggingInForm extends Component{
       requestParams
     ).then(
       response => {
-        this.getUserData(response.data["jwt"])
-        this.setState({jwt:response.data["jwt"]})
+        this.getUserData(response.data.jwt)
+        this.setState({jwt:response.data.jwt})
       }
     ).catch((error) => {
       RequestError(error)

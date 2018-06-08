@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Icon } from 'semantic-ui-react'
 import { logout } from "../actions/index"
+import { Link } from "react-router-dom";
 
 const mapStateToProps = state => {
   return { userData: state.userData };
@@ -36,7 +37,7 @@ class LoggedInUser extends Component {
       <div className="logged-in">
         <Icon style={{ display: "inline" }} name='user' size='large'></Icon>
         <span className="logged-in-user-email" style={{ display: "inline" }}> {userData.email}</span>
-        <Button style={{ display: "inline" }} id='logoutButton' onClick={this.loggedOut.bind(this)} size='small'>Logout</Button>
+        <Link to="/protected">Protected</Link>
       </div>
     )
   }

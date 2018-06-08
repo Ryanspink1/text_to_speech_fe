@@ -5,7 +5,7 @@ body {
   padding-top:50%;
 }
 
-.page-header {
+/* .page-header {
   margin-top: 2%;
   margin-left:2%;
   margin-right:2%;
@@ -28,7 +28,7 @@ body {
   margin-left: 1%;
   margin-right: 2%;
   font-size: 18px;
-}
+} */
 
 .text-to-speech-component {
   border: 2px solid black;
