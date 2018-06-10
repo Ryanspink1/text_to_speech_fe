@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteConversion } from '../actions/index'
 import store from "../store/index"
-import { List, Icon, Button } from 'semantic-ui-react'
+import { Grid, List, Icon, Button } from 'semantic-ui-react'
 import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 
@@ -70,14 +70,24 @@ render(){
       </List.Item>
     );
   return(
-    <List divided relaxed animated>
-      {listItems}
-    </List>
+    <Grid.Row centered>
+      <Grid.Column width={6}>
+        <List divided relaxed animated>
+          {listItems}
+        </List>
+      </Grid.Column>
+    </Grid.Row>
   )
   }else{
     return(
-      <div>
-      </div>
+      <Grid.Row centered>
+        <Grid.Column width={6}>
+          <div id='no-conversions-list-text'>
+            Enter a phrase, select a voice, and click submit!<Icon name='hand point up outline' size='large'/>
+          </div>
+        </Grid.Column>
+      </Grid.Row>
+
     )
   }
   }

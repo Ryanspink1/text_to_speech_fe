@@ -37,7 +37,7 @@ class LoggedInUser extends Component {
       <div className="logged-in">
         <Icon style={{ display: "inline" }} name='user' size='large'></Icon>
         <span className="logged-in-user-email" style={{ display: "inline" }}> {userData.email}</span>
-        <Link to="/protected">Protected</Link>
+        <Button style={{ display: "inline" }} id='logoutButton' onClick={this.loggedOut.bind(this)} size='small'>Logout</Button>
       </div>
     )
   }

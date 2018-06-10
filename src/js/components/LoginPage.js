@@ -39,7 +39,7 @@ class ConnectedLoginPage extends Component{
       )
     }else{
       return(
-        <Redirect to='/user' />
+        <Redirect to='/convert' />
      )
     }
   }
