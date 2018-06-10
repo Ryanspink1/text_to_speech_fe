@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Dropdown, Button} from "semantic-ui-react";
+import { Grid, Form, Dropdown, Button} from "semantic-ui-react";
 import { voiceOptions } from "../helpers/voiceOptions"
 import { addUserConversion } from "../actions/index";
 import { AxiosRequest } from "../helpers/axios"
@@ -68,15 +68,17 @@ class ConnectedTextToSpeechForm extends Component {
 
   render(){
     return(
-      <div className="text-to-speech-component">
-        <Form className="text-to-speech-form">
-          <Form.Group>
-            <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={6}></Form.Input>
-            <Form.Field control={ Dropdown } width={4} onChange={this.handleChange} value={this.state.voice} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
-            <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
-          </Form.Group>
-        </Form>
-      </div>
+      <Grid.Row centered>
+        <Grid.Column className="text-to-speech-component" width={10}>
+          <Form className="text-to-speech-form">
+            <Form.Group>
+              <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={6}></Form.Input>
+              <Form.Field control={ Dropdown } width={4} onChange={this.handleChange} value={this.state.voice} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
+              <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
+            </Form.Group>
+          </Form>
+        </Grid.Column>
+      </Grid.Row>
     )
   }
 }
