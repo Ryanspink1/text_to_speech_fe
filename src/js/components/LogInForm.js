@@ -144,7 +144,7 @@ class ConnectedLoginForm extends Component{
     return(
       <Form className="login-signup-form">
         <Form.Input onChange={ this.handleChange } id="email" placeholder='Email' width={16} ></Form.Input>
-        <Form.Input onChange={ this.handleChange} id="password" type='password' placeholder='Password' width={16}></Form.Input>
+        <Form.Input onChange={ this.handleChange } id="password" type='password' placeholder='Password' width={16}></Form.Input>
         { LoginOrSignupButton }
       </Form>
     )

@@ -34,11 +34,6 @@ class ConnectedNavbar extends Component{
     })
   }
 
-  handleAClick = (e, { color }) =>{
-    this.setState({ activeA: color });
-    console.log(this.state.activeA)
-   }
-
   render() {
     const { activeA} = this.state
 
@@ -61,7 +56,6 @@ class ConnectedNavbar extends Component{
                     active={activeA === c[1]}
                     color={c[1]}
                     value={c}
-                    onClick={this.handleAClick}
                   />
                 </NavLink>
               ))}
