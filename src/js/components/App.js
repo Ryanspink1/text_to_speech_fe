@@ -5,8 +5,9 @@ import LoginPage from './LoginPage';
 import TextToSpeechForm from './TextToSpeechForm';
 import ConversionList from './ConversionList';
 import PrivateRoute from '../helpers/privateRoute';
-import { UserPage } from './UserPage';
+import UserPage from './UserPage';
 import { UserProfile } from './UserProfile';
+import Recorder from './Recorder'
 
 const App = (props) => (
     <Switch>

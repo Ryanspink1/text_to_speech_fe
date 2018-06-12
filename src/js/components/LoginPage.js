@@ -27,6 +27,7 @@ class ConnectedLoginPage extends Component{
     this.setState(
       { loggedIn: store.getState().loggedIn }
     )
+    document.body.id = 'app-body';
   }
 
   render() {

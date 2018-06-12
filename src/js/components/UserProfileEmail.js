@@ -86,7 +86,9 @@ class ConnectedUserProfileEmail extends Component{
     return(
       <Grid.Row centered>
         <Grid.Column width={6}>
-          {userForm}
+          <div className='speech-conversion-list-container'>
+            {userForm}
+          </div>
         </Grid.Column>
       </Grid.Row>
     )

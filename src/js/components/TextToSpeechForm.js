@@ -38,6 +38,10 @@ class ConnectedTextToSpeechForm extends Component {
     )
   }
 
+  componentDidMount(){
+    console.log(store);
+  }
+
   handleChange(event, {id, value}){
     event.preventDefault();
     this.setState({ [id]: value});
@@ -70,13 +74,15 @@ class ConnectedTextToSpeechForm extends Component {
     return(
       <Grid.Row centered>
         <Grid.Column className="text-to-speech-component" width={10}>
-          <Form className="text-to-speech-form">
-            <Form.Group>
-              <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={6}></Form.Input>
-              <Form.Field control={ Dropdown } width={4} onChange={this.handleChange} value={this.state.voice} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
-              <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
-            </Form.Group>
-          </Form>
+          <div className='speech-conversion-list-container'>
+            <Form className="text-to-speech-form">
+              <Form.Group>
+                <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={6}></Form.Input>
+                <Form.Field control={ Dropdown } width={4} onChange={this.handleChange} value={this.state.voice} id="voice" placeholder='Select voice' fluid search selection options={voiceOptions} />
+                <Form.Field control={ Button } onClick={ this.handleSubmit.bind(this) } size='small' >Submit</Form.Field>
+              </Form.Group>
+            </Form>
+          </div>
         </Grid.Column>
       </Grid.Row>
     )
