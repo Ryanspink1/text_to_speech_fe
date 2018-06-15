@@ -6,6 +6,7 @@ import { login } from "../actions/index";
 import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 import { addUserConversion } from "../actions/index";
+import { addUserSpeechConversion } from "../actions/index";
 import store from "../store/index"
 
 
@@ -14,6 +15,7 @@ const mapDispatchToProps = dispatch => {
     addUserData: userData => dispatch(addUserData(userData)),
     login: loggedIn => dispatch(login(loggedIn)),
     addUserConversion: userConversion => dispatch(addUserConversion(userConversion)),
+    addUserSpeechConversion: userSpeechConversion => dispatch(addUserSpeechConversion(userSpeechConversion)),
   };
 };
 
@@ -102,7 +104,28 @@ class ConnectedLoginForm extends Component{
     .then(
       response => {
         const conversions = response.data
-        this.props.addUserConversion(conversions)
+        this.props.addUserConversion(conversions);
+        this.getSpeechConversions();
+      }
+    ).catch((error) => {
+      RequestError(error)
+    });
+  }
+
+  getSpeechConversions(){
+    const requestParams = {
+      method:  'get',
+      url:     `http://localhost:3001/api/v1/speech_conversions`,
+      headers: {'Authorization' :'Bearer ' + this.state.jwt},
+      data:    null
+    }
+    AxiosRequest(
+      requestParams
+    )
+    .then(
+      response => {
+        const speech_conversions = response.data
+        this.props.addUserSpeechConversion(speech_conversions);
         this.props.history.push('/user')
       }
     ).catch((error) => {

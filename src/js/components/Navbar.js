@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Menu, Grid, Button} from "semantic-ui-react";
 import { Redirect, NavLink, withRouter} from 'react-router-dom'
 import { logout } from "../actions/index"
+import SwitchConversionRadio from './SwitchConversionRadio'
 
 
 const mapDispatchToProps = dispatch => {
@@ -46,6 +47,12 @@ class ConnectedNavbar extends Component{
             </Menu.Item>
             <Menu.Item header fitted='vertically' id='nav-name'>
               <p>Text to Speech</p>
+            </Menu.Item>
+            <Menu.Item header fitted='vertically' id='nav-toggle'>
+              <SwitchConversionRadio/>
+            </Menu.Item>
+            <Menu.Item header fitted='vertically' id='nav-name'>
+              <p>Speech To Text</p>
             </Menu.Item>
             <Menu.Menu position='right'>
               {colorsA.map(c => (

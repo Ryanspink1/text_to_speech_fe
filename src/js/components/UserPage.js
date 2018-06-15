@@ -1,13 +1,19 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
-import TextToSpeechForm from './TextToSpeechForm';
-import ConversionList from './ConversionList';
-import Navbar from './Navbar';
+import { connect } from 'react-redux'
+import { TextToSpeechPage } from './TextToSpeechPage'
+import { SpeechToTextPage } from './SpeechToTextPage'
 
-export const UserPage = () => (
-  <Grid>
-    <Navbar/>
-    <TextToSpeechForm/>
-    <ConversionList/>
-  </Grid>
+const mapStateToProps = state => {
+  return{
+    speechToText: state.speechToText
+  };
+};
+
+const ConnectedUserPage = ({ speechToText }) => (
+  (speechToText === false)
+    ? <TextToSpeechPage/>
+    : <SpeechToTextPage/>
 )
+
+const UserPage = connect(mapStateToProps)(ConnectedUserPage);
+export default UserPage;
