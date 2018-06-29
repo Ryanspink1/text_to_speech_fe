@@ -51,7 +51,7 @@ render(){
   if(this.props.loggedIn === true && this.props.conversions.length >=1){
     const data = this.props.conversions
       const listItems = data.map((d)=>
-       <List.Item key={d.id}>
+       <List.Item key={d.id} className='speech-conversion-list-item'>
          <List.Icon name='delete' link={1} className='speech-conversion-list-item-icon' size='large' verticalAlign='middle' color='red' onClick={ () => this.deleteConversionItem({ d })}/>
          <List.Header className='speech-conversion-list-item-header' verticalAlign='top'>
            <Icon name='headphones' size='small'/> {d.text}
@@ -78,21 +78,19 @@ render(){
         </div>
       </Grid.Column>
     </Grid.Row>
-  )
-  }else{
-    return(
-      <Grid.Row centered>
-        <Grid.Column width={6}>
-          <div className='speech-conversion-list-container'>
-            <div id='no-conversions-list-text'>
-              Enter a phrase, select a voice, and click submit!<Icon name='hand point up outline' size='large'/>
+  )}else{
+      return(
+        <Grid.Row centered>
+          <Grid.Column width={6}>
+            <div className='speech-conversion-list-container'>
+              <div id='no-conversions-list-text'>
+                Enter a phrase, select a voice, and click submit!<Icon name='hand point up outline' size='large'/>
+              </div>
             </div>
-          </div>
-        </Grid.Column>
-      </Grid.Row>
-
-    )
-  }
+          </Grid.Column>
+        </Grid.Row>
+      )
+    }
   }
 }
 

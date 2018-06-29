@@ -4,6 +4,7 @@ import { Grid } from 'semantic-ui-react';
 import LoginForm from './LoginForm'
 import { addLoginButtonStatus } from '../actions/index'
 import store from "../store/index"
+import FormError from './FormError';
 
 
 const mapDispatchToProps = dispatch => {
@@ -40,6 +41,7 @@ class ConnectedLoginSignup extends Component{
         <Grid.Column width={4}>
           <div id="login-signup-selector">
             {buttons}
+            <FormError/>
             <LoginForm/>
           </div>
         </Grid.Column>

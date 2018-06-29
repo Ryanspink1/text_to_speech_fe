@@ -25,6 +25,7 @@ class ConnectedNavbar extends Component{
 
   loggedOut(){
     this.props.logout()
+    document.body.id = '';
   }
 
   componentDidMount(){
@@ -56,13 +57,13 @@ class ConnectedNavbar extends Component{
             </Menu.Item>
             <Menu.Menu position='right'>
               {colorsA.map(c => (
-                <NavLink key ={c[1]} to={c[2]}>
+                <NavLink key ={ c[1] } to={ c[2] }>
                   <Menu.Item
-                    key={c[1]}
-                    name={c[0]}
-                    active={activeA === c[1]}
-                    color={c[1]}
-                    value={c}
+                    key={ c[1] }
+                    name={ c[0] }
+                    active={ activeA === c[1] }
+                    color={ c[1] }
+                    value={ c }
                   />
                 </NavLink>
               ))}
