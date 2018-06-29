@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect} from 'react-router-dom'
+import { Link, Redirect} from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
-import LoginForm from './LoginForm'
-import LoggedIn from './LoggedIn'
-import { Greeting } from './Greeting'
+import LoginForm from './LoginForm';
+import LoggedIn from './LoggedIn';
+import { Greeting } from './Greeting';
 import store from '../store/index';
-import LoginSignup from './LoginSignup'
+import LoginSignup from './LoginSignup';
 
 const mapStateToProps = state => {
   return { loggedIn: state.loggedIn };

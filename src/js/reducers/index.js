@@ -8,6 +8,8 @@ import { CHANGE_USER_EMAIL } from "../constants/action-types";
 import { CHANGE_APP_STATE } from "../constants/action-types";
 import { ADD_USER_SPEECH_CONVERSION } from "../constants/action-types";
 import { DELETE_SPEECH_CONVERSION } from "../constants/action-types";
+import { ADD_FORM_ERROR } from "../constants/action-types";
+import { CLEAR_FORM_ERROR } from "../constants/action-types";
 
 const initialState = {
   loggedIn: false,
@@ -17,7 +19,8 @@ const initialState = {
   conversions: [],
   loginButton: true,
   speechToText: false,
-  speech_conversions: []
+  speech_conversions: [],
+  formError: null,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -42,6 +45,10 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, speech_conversions: state.speech_conversions.concat(action.payload) };
     case DELETE_SPEECH_CONVERSION:
       return { ...state, speech_conversions: state.speech_conversions.filter(speechConversion => speechConversion != action.payload) };
+    case ADD_FORM_ERROR:
+      return { ...state, formError: action.payload};
+    case CLEAR_FORM_ERROR:
+      return { ...state, formError: null};
     default:
      return state;
   }

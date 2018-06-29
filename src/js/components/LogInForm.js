@@ -7,8 +7,8 @@ import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 import { addUserConversion } from "../actions/index";
 import { addUserSpeechConversion } from "../actions/index";
+import { addFormError } from "../actions/index";
 import store from "../store/index"
-
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -16,6 +16,7 @@ const mapDispatchToProps = dispatch => {
     login: loggedIn => dispatch(login(loggedIn)),
     addUserConversion: userConversion => dispatch(addUserConversion(userConversion)),
     addUserSpeechConversion: userSpeechConversion => dispatch(addUserSpeechConversion(userSpeechConversion)),
+    addFormError: formError => dispatch(addFormError(formError))
   };
 };
 
@@ -46,7 +47,9 @@ class ConnectedLoginForm extends Component{
 
   logIn(event){
     event.preventDefault();
-    this.postUserLogin();
+    ((this.state.email === "" || this.state.password === ""))
+      ? this.props.addFormError('blank')
+      : this.postUserLogin()
   }
 
   postUserLogin() {
@@ -65,6 +68,7 @@ class ConnectedLoginForm extends Component{
       }
     ).catch((error) => {
       RequestError(error)
+      this.props.addFormError('login')
     });
   }
 
@@ -156,6 +160,7 @@ class ConnectedLoginForm extends Component{
       }
     ).catch((error) => {
       RequestError(error)
+      this.props.addFormError('signUp')
     });
   }
 
