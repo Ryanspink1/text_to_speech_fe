@@ -29,17 +29,27 @@ class ConnectedFormError extends Component {
 
   render(){
     let errorMessage
+    let errorStyle
 
     if(this.props.formError === 'blank'){
       errorMessage = 'Input(s) may not be blank.'
+      errorStyle = {
+        color: 'red'
+      }
     }else if(this.props.formError === 'login'){
       errorMessage = 'Invalid Login Credentials'
+      errorStyle = {
+        color: 'red'
+      }
     }else if(this.props.formError === 'signUp'){
       errorMessage = 'Incorrect format or username taken.'
+      errorStyle = {
+        color: 'red'
+      }
     }
 
     let error = (this.props.formError !== null)
-      ? <p>{ errorMessage }</p>
+      ? <p style={errorStyle}>{ errorMessage }</p>
       : <span/>
 
     return(
