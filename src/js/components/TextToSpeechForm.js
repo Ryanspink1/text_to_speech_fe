@@ -58,7 +58,7 @@ class ConnectedTextToSpeechForm extends Component {
   sendText(){
     const requestParams = {
       method:  'post',
-      url:     'http://localhost:3001/api/v1/users/conversions',
+      url:     'https://tts-stt.herokuapp.com/api/v1/users/conversions',
       headers: {'Authorization' :'Bearer ' + this.props.jwt},
       data:    {voice: this.state.voice, text: this.state.text, id: this.props.id}
     }

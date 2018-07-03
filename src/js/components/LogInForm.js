@@ -55,7 +55,7 @@ class ConnectedLoginForm extends Component{
   postUserLogin() {
     const requestParams = {
       method:  'post',
-      url:     'http://localhost:3001/api/v1/user_token',
+      url:     'https://tts-stt.herokuapp.com/api/v1/user_token',
       headers: { 'content-type':'application/json' },
       data:    { 'auth': { 'email': this.state.email,'password':this.state.password }}
     }
@@ -75,7 +75,7 @@ class ConnectedLoginForm extends Component{
   getUserData(jwt) {
     const requestParams = {
       method:  'get',
-      url:     'http://localhost:3001/api/v1/users',
+      url:     'https://tts-stt.herokuapp.com/api/v1/users',
       headers: {'Authorization' :'Bearer ' + jwt},
       data:    null
     }
@@ -98,7 +98,7 @@ class ConnectedLoginForm extends Component{
   getConversions(){
     const requestParams = {
       method:  'get',
-      url:     `http://localhost:3001/api/v1/conversions`,
+      url:     `https://tts-stt.herokuapp.com/api/v1/conversions`,
       headers: {'Authorization' :'Bearer ' + this.state.jwt},
       data:    null
     }
@@ -119,7 +119,7 @@ class ConnectedLoginForm extends Component{
   getSpeechConversions(){
     const requestParams = {
       method:  'get',
-      url:     `http://localhost:3001/api/v1/speech_conversions`,
+      url:     `https://tts-stt.herokuapp.com/api/v1/speech_conversions`,
       headers: {'Authorization' :'Bearer ' + this.state.jwt},
       data:    null
     }
@@ -149,7 +149,7 @@ class ConnectedLoginForm extends Component{
   createUser(event){
     const requestParams = {
       method:  'post',
-      url:     'http://localhost:3001/api/v1/users',
+      url:     'https://tts-stt.herokuapp.com/api/v1/users',
       headers: { 'content-type':'application/json' },
       data:    { 'email': this.state.email, 'password':this.state.password }
     }

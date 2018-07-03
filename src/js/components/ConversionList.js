@@ -32,7 +32,7 @@ class ConnectedConversionList extends Component {
     const requestParams = {
       method:  'DELETE',
       headers: { 'content-type':'application/json' },
-      url:     `http://localhost:3001/api/v1/conversions/${d.d.id}`,
+      url:     `https://tts-stt.herokuapp.com/api/v1/conversions/${d.d.id}`,
       headers: {'Authorization' :'Bearer ' + this.props.jwt},
     }
     AxiosRequest(
