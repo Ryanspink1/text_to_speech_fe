@@ -141,7 +141,9 @@ class ConnectedLoginForm extends Component{
 
   signUp(event){
     event.preventDefault();
-    this.createUser(event);
+    ((this.state.email === "" || this.state.password === ""))
+      ? this.props.addFormError('blank')
+      : this.createUser(event)
   }
 
   createUser(event){

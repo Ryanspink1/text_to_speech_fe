@@ -4,6 +4,9 @@ import { Grid, Form, Input, Button, Label} from 'semantic-ui-react';
 import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
 import { changeUserEmail } from "../actions/index";
+import { addFormError } from "../actions/index";
+import FormError from './FormError';
+
 
 const mapStateToProps = state =>{
   return {
@@ -14,6 +17,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch => {
   return {
     changeUserEmail: email => dispatch(changeUserEmail(email)),
+    addFormError: formError => dispatch(addFormError(formError)),
   };
 };
 
@@ -72,6 +76,7 @@ class ConnectedUserProfileEmail extends Component{
         })
       }
     ).catch((error) => {
+      this.props.addFormError('signUp')
       RequestError(error)
     });
   }
@@ -87,6 +92,7 @@ class ConnectedUserProfileEmail extends Component{
       <Grid.Row centered>
         <Grid.Column width={6}>
           <div className='speech-conversion-list-container'>
+            <FormError/>
             {userForm}
           </div>
         </Grid.Column>

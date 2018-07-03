@@ -6,6 +6,9 @@ import { addUserConversion } from "../actions/index";
 import { AxiosRequest } from "../helpers/axios"
 import { RequestError } from "../helpers/error_handling";
 import store from "../store/index";
+import FormError from './FormError';
+import { addFormError } from "../actions/index";
+
 
 const mapStateToProps = state => {
   return {
@@ -16,7 +19,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addUserConversion: userConversion => dispatch(addUserConversion(userConversion))
+    addUserConversion: userConversion => dispatch(addUserConversion(userConversion)),
+    addFormError: formError => dispatch(addFormError(formError))
   };
 };
 
@@ -38,10 +42,6 @@ class ConnectedTextToSpeechForm extends Component {
     )
   }
 
-  componentDidMount(){
-    console.log(store);
-  }
-
   handleChange(event, {id, value}){
     event.preventDefault();
     this.setState({ [id]: value});
@@ -49,8 +49,13 @@ class ConnectedTextToSpeechForm extends Component {
 
 
   handleSubmit(event){
-    console.log(this.props)
     event.preventDefault();
+    ((this.state.voice === "" || this.state.text === ""))
+      ? this.props.addFormError('blank')
+      : this.sendText()
+  }
+
+  sendText(){
     const requestParams = {
       method:  'post',
       url:     'http://localhost:3001/api/v1/users/conversions',
@@ -75,6 +80,7 @@ class ConnectedTextToSpeechForm extends Component {
       <Grid.Row centered>
         <Grid.Column className="text-to-speech-component" width={10}>
           <div className='speech-conversion-list-container'>
+            <FormError/>
             <Form className="text-to-speech-form">
               <Form.Group>
                 <Form.Input onChange={ this.handleChange } value={this.state.text} id="text" placeholder='Text' width={6}></Form.Input>
