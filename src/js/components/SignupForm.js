@@ -36,7 +36,7 @@ class NonConnectedSignUpForm extends Component{
   createUser(event){
     const requestParams = {
       method:  'post',
-      url:     'http://localhost:3001/api/v1/users',
+      url:     'https://tts-stt.herokuapp.com/api/v1/users',
       headers: { 'content-type':'application/json' },
       data:    { 'email': this.state.email, 'password':this.state.password }
     }

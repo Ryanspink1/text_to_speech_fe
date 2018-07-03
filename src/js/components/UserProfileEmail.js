@@ -61,7 +61,7 @@ class ConnectedUserProfileEmail extends Component{
   requestEmailUpdate(){
     const requestParams = {
       method:  'put',
-      url:     'http://localhost:3001/api/v1/users/' + this.props.userData.id,
+      url:     'https://tts-stt.herokuapp.com/api/v1/users/' + this.props.userData.id,
       headers: {'Authorization' :'Bearer ' + this.props.userData.jwt},
       data:    { 'email':`${this.state.email}`}
     }

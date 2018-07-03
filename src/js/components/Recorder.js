@@ -50,7 +50,7 @@ class ConnectedRecorder extends Component{
   setData(fd){
     const requestParams = {
       method:  'post',
-      url:     'http://localhost:3001/api/v1/speech_conversions',
+      url:     'https://tts-stt.herokuapp.com/api/v1/speech_conversions',
       headers: {'Authorization' :'Bearer ' + this.props.jwt},
       data:    fd
     }
