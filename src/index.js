@@ -12,7 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 render(
   <Provider store={store}>
     <Router>
-      <Route path="/:filter?" component={App} />
+      <Route path="/text_to_speech_fe/:filter?" component={App} />
     </Router>
   </Provider>,
   document.getElementById("app")
