@@ -14,16 +14,20 @@
     "semantic-ui": "^2.3.1",
     "semantic-ui-react": "^0.80.0"
   },
+  "homepage": "https://ryanspink1.github.io/text_to_speech_fe/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "gh-pages": "^2.0.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   }
