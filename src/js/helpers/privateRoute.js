@@ -14,7 +14,7 @@ const PrivateRoute = ({component: Component, loggedIn, ...rest}) => (
         <Component {...props}/>
       ) : (
         <Redirect to={{
-          pathname: '/',
+          pathname: '/text_to_speech_fe/',
           state: {from: props.location}
         }}/>
       )
