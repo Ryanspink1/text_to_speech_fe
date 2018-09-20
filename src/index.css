@@ -42,7 +42,6 @@ body {
 
 .text-to-speech-component {
   border: 2px solid black;
-  /* border-radius: 7px 7px 7px 7px; */
   border:none;
   padding-top: 2%;
   display:inline-block;

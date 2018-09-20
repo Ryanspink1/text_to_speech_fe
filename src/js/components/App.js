@@ -11,9 +11,9 @@ import Recorder from './Recorder'
 
 const App = (props) => (
     <Switch>
-      <Route exact path="/" component={ LoginPage} />
-      <PrivateRoute path="/convert" component={ UserPage } loggedIn={ props.loggedIn }/>
-      <PrivateRoute path="/profile" component={ UserProfile } loggedIn={ props.loggedIn }/>
+      <Route exact path="/text_to_speech_fe/" component={ LoginPage} />
+      <PrivateRoute path="/text_to_speech_fe/convert" component={ UserPage } loggedIn={ props.loggedIn }/>
+      <PrivateRoute path="/text_to_speech_fe/profile" component={ UserProfile } loggedIn={ props.loggedIn }/>
     </Switch>
 );
 
