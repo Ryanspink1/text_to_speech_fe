@@ -2,6 +2,7 @@
   "name": "text_to_speech_fe",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ryanspink1.github.io/text_to_speech_fe/",
   "dependencies": {
     "ajv": "^6.4.0",
     "axios": "^0.18.0",
@@ -14,7 +15,6 @@
     "semantic-ui": "^2.3.1",
     "semantic-ui-react": "^0.80.0"
   },
-  "homepage": "https://ryanspink1.github.io/text_to_speech_fe/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
