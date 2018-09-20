@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const colorsA = [['Convert Phrase','teal', 'convert'], ['Profile','green', 'profile']]
-const colorFromPathname = {'/convert': 'teal', '/profile': 'green'}
+const colorFromPathname = {'/text_to_speech_fe/convert': 'teal', '/text_to_speech_fe/profile': 'green'}
 
 class ConnectedNavbar extends Component{
   constructor(){

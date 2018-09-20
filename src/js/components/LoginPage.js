@@ -40,7 +40,7 @@ class ConnectedLoginPage extends Component{
       )
     }else{
       return(
-        <Redirect to='/convert' />
+        <Redirect to='/text_to_speech_fe/convert' />
      )
     }
   }
