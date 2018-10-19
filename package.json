@@ -4,15 +4,15 @@
   "private": true,
   "homepage": "https://ryanspink1.github.io/text_to_speech_fe/",
   "dependencies": {
-    "ajv": "^6.4.0",
+    "ajv": "^6.5.4",
     "axios": "^0.18.0",
     "gulp": "^3.9.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-mic": "^9.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "semantic-ui": "^2.3.1",
+    "semantic-ui": "^2.4.1",
     "semantic-ui-react": "^0.80.0"
   },
   "scripts": {
@@ -26,9 +26,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "gh-pages": "^2.0.0",
+    "babel-preset-env": "^1.7.0",
+    "gh-pages": "^2.0.1",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.0"
+    "redux": "^4.0.1"
   }
 }

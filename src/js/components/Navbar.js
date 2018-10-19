@@ -25,6 +25,7 @@ class ConnectedNavbar extends Component{
 
   loggedOut(){
     this.props.logout()
+    sessionStorage.clear();
     document.body.id = '';
   }
 
