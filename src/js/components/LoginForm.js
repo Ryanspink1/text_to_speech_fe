@@ -5,16 +5,12 @@ import { addUserData } from "../actions/index";
 import { login } from "../actions/index";
 import { AxiosRequest } from "../helpers/axios";
 import { RequestError } from "../helpers/error_handling";
-import { addUserConversion } from "../actions/index";
-import { addUserSpeechConversion } from "../actions/index";
 import { addFormError } from "../actions/index";
 
 const mapDispatchToProps = dispatch => {
   return {
     addUserData: userData => dispatch(addUserData(userData)),
     login: loggedIn => dispatch(login(loggedIn)),
-    addUserConversion: userConversion => dispatch(addUserConversion(userConversion)),
-    addUserSpeechConversion: userSpeechConversion => dispatch(addUserSpeechConversion(userSpeechConversion)),
     addFormError: formError => dispatch(addFormError(formError))
   };
 };
