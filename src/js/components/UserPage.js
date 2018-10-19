@@ -10,7 +10,9 @@ import { addUserSpeechConversion } from "../actions/index";
 const mapStateToProps = state => {
   return{
     speechToText: state.speechToText,
-    userData: state.userData
+    userData: state.userData,
+    conversions: state.conversions,
+    speech_conversions: state.speech_conversions,
   };
 };
 
@@ -28,7 +30,13 @@ class ConnectedUserPage extends Component{
   }
 
   componentDidMount(){
-    this.getConversions();
+    this.props.conversions.length === 0
+    ? this.getConversions()
+    : null
+
+    this.props.speech_conversions.length === 0
+    ? this.getSpeechConversions()
+    : null
   }
 
   getConversions(){
@@ -45,7 +53,6 @@ class ConnectedUserPage extends Component{
       response => {
         const conversions = response.data
         this.props.addUserConversion(conversions);
-        this.getSpeechConversions();
       }
     ).catch((error) => {
       RequestError(error)
