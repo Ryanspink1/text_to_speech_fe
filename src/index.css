@@ -36,6 +36,19 @@ body {
   font-size: 150%;
 }
 
+#watson-power-image {
+}
+
+#watson-power-row {
+  padding-top: 4%;
+}
+
+#watson-power-text {
+  font-family: Arial;
+  font-size: 110%;
+  font-weight: bold;
+}
+
 .field {
   display: block;
 }

@@ -71,7 +71,7 @@ class ConnectedRecorder extends Component{
     let record = this.state.record
     let recordButton = (record === false)
       ? <Icon id="record-speech-inactive" aria-label={ "Record" } className="record-speech-icon" name="dot circle outline" size={ "huge" } onClick={ this.startRecording.bind(this) } />
-    : <Icon id="record-speech-active" aria-label={ "Stop Recording" } className="record-speech-icon" name="stop circle outline" size={ "huge" } onClick={ this.stopRecording.bind(this) } />
+      : <Icon id="record-speech-active" aria-label={ "Stop Recording" } className="record-speech-icon" name="stop circle outline" size={ "huge" } onClick={ this.stopRecording.bind(this) } />
 
     return(
       <Grid.Row centered>
@@ -86,11 +86,10 @@ class ConnectedRecorder extends Component{
             <br/>
           </div>
           <div id="react-mic-button-container">
-            {recordButton}
+            { recordButton }
           </div>
         </Grid.Column>
       </Grid.Row>
-
     )
   }
 }

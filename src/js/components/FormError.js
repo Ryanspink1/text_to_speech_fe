@@ -49,7 +49,7 @@ class ConnectedFormError extends Component {
     }
 
     let error = (this.props.formError !== null)
-      ? <p style={errorStyle}>{ errorMessage }</p>
+      ? <p style={ errorStyle }>{ errorMessage }</p>
       : <span/>
 
     return(

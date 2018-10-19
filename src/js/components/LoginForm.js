@@ -8,7 +8,6 @@ import { RequestError } from "../helpers/error_handling";
 import { addUserConversion } from "../actions/index";
 import { addUserSpeechConversion } from "../actions/index";
 import { addFormError } from "../actions/index";
-import store from "../store/index"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -88,49 +87,10 @@ class ConnectedLoginForm extends Component{
 
         this.props.addUserData([user.email, jwt, user.id])
         this.props.login()
-        this.getConversions();
-      }
-    ).catch((error) => {
-      RequestError(error)
-    });
-  }
-
-  getConversions(){
-    const requestParams = {
-      method:  'get',
-      url:     `https://tts-stt.herokuapp.com/api/v1/conversions`,
-      headers: {'Authorization' :'Bearer ' + this.state.jwt},
-      data:    null
-    }
-    AxiosRequest(
-      requestParams
-    )
-    .then(
-      response => {
-        const conversions = response.data
-        this.props.addUserConversion(conversions);
-        this.getSpeechConversions();
-      }
-    ).catch((error) => {
-      RequestError(error)
-    });
-  }
-
-  getSpeechConversions(){
-    const requestParams = {
-      method:  'get',
-      url:     `https://tts-stt.herokuapp.com/api/v1/speech_conversions`,
-      headers: {'Authorization' :'Bearer ' + this.state.jwt},
-      data:    null
-    }
-    AxiosRequest(
-      requestParams
-    )
-    .then(
-      response => {
-        const speech_conversions = response.data
-        this.props.addUserSpeechConversion(speech_conversions);
-        this.props.history.push('/user')
+        sessionStorage.setItem('email', user.email)
+        sessionStorage.setItem('jwt', jwt)
+        sessionStorage.setItem('id', user.id.toString())
+        sessionStorage.setItem('loginTime', Date.now().toString())
       }
     ).catch((error) => {
       RequestError(error)
@@ -168,8 +128,8 @@ class ConnectedLoginForm extends Component{
 
   render() {
     let LoginOrSignupButton = (this.props.loginButton === true)
-        ? <Form.Field control={Button} onClick={ this.logIn.bind(this) } size='small' >Login</Form.Field>
-        : <Form.Field control={Button} onClick={ this.signUp.bind(this)} size='small' >Sign Up</Form.Field>
+        ? <Form.Field control={ Button } onClick={ this.logIn.bind(this) } size='small' >Login</Form.Field>
+        : <Form.Field control={ Button } onClick={ this.signUp.bind(this)} size='small' >Sign Up</Form.Field>
 
     return(
       <Form className="login-signup-form">
